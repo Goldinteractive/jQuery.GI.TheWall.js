@@ -554,12 +554,12 @@
         };
 
         this.next = function () {
-            if (isLoading ||  !isVisible || this.currentIndex === this.itemsLength - 1 ) return;
+            if (isLoading ||  !isVisible || this.currentIndex === this.itemsLength - 1 ) return;
             this.showItemByIndex(this.currentIndex + 1);
         };
 
         this.prev = function () {
-            if (isLoading || !isVisible ||  this.currentIndex === 0) return;
+            if (isLoading || !isVisible ||  this.currentIndex === 0) return;
             this.showItemByIndex(this.currentIndex - 1);
         };
 
