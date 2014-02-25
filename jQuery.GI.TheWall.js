@@ -523,7 +523,7 @@
 
         this.updateExpanderPosition = function () {
             if (!isVisible) return;
-            var newTopPosition = this.selectedLiData.offset.top + this.$selectedli.height() + options.margin.top;
+            var newTopPosition = this.$el.scrollTop() + this.selectedLiData.offset.top + this.$selectedli.height() + options.margin.top;
             // set expandWrapper top position
             this.$expanderWrapper.css({
                 top: newTopPosition
