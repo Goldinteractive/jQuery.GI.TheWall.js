@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.0.7
+ * Version 0.0.8
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -74,6 +74,7 @@
                 closebutton: true,
                 keyboardNavigation: true,
                 animationSpeed: 300,
+                autoscroll:true,
                 responsive: true,
                 initialWrapperHeight: 600,
                 dynamicHeight: true,
@@ -178,6 +179,7 @@
          * @param  { Int } value: pixels from the top
          */
         var _scrollTo = function (value) {
+            if (!options.autoscroll) return false;
             $('html,body').animate({
                 scrollTop: value
             });
@@ -523,7 +525,7 @@
 
         this.updateExpanderPosition = function () {
             if (!isVisible) return;
-            var newTopPosition = this.$el.scrollTop() + this.selectedLiData.offset.top + this.$selectedli.height() + options.margin.top;
+            var newTopPosition = this.selectedLiData.offset.top + this.$selectedli.height() + options.margin.top;
             // set expandWrapper top position
             this.$expanderWrapper.css({
                 top: newTopPosition
@@ -554,12 +556,12 @@
         };
 
         this.next = function () {
-            if (isLoading ||  !isVisible || this.currentIndex === this.itemsLength - 1 ) return;
+            if (isLoading ||  !isVisible || this.currentIndex === this.itemsLength - 1 ) return;
             this.showItemByIndex(this.currentIndex + 1);
         };
 
         this.prev = function () {
-            if (isLoading || !isVisible ||  this.currentIndex === 0) return;
+            if (isLoading || !isVisible ||  this.currentIndex === 0) return;
             this.showItemByIndex(this.currentIndex - 1);
         };
 
