@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.0.8
+ * Version 0.0.9
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -9,7 +9,7 @@
 /*global Modernizr $*/
 
 
-~~ (function (document, window, $document, $window, $body, $) {
+(function (document, window, $document, $window, $body, $) {
     "use strict";
 
     /**
@@ -607,13 +607,14 @@
          */
 
         this.destroy = function (e) {
-            if (isLoading || !isVisible) return;
             if (e) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
             }
             this.hideExpander();
+
             this.unbindAll();
+            this.$expanderWrapper.remove();
             execCallback(options.onDestroy);
         };
         return this.init();
