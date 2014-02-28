@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.0.9
+ * Version 0.1.0
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -418,13 +418,13 @@
                     self.$expanderInner.css({
                         height: 'auto'
                     });
-                    execCallback(options.onContentLoaded);
+
                     var newHeight = options.dynamicHeight ? self.$expanderInner.height() : options.initialWrapperHeight;
                     _updateExpanderWrapperHeight.call(self, newHeight);
                     // update the DOM
                     self.updateDOM();
                     _scrollTo(self.$expanderWrapper.offset().top - 150);
-
+                    execCallback(options.onContentLoaded);
                     isLoading = false;
                 });
             }
