@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.0
+ * Version 0.1.1
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -587,7 +587,7 @@
                 this.$el.on('click' + eventsNamespace, ".GI_TW_close", this.$expanderWrapper, $.proxy(this.hideExpander, this));
             }
 
-            this.$el.on('click' + eventsNamespace, "li", $.proxy(this.showExpander, this));
+            this.$el.on('click' + eventsNamespace, "> ul > li", $.proxy(this.showExpander, this));
 
             if (options.responsive)
                 $window.on("resize" + eventsNamespace + " orientationchange" + eventsNamespace, $.proxy(this.setViewport.debounce(300), this));
