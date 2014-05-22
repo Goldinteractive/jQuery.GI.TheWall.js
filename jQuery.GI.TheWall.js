@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.1
+ * Version 0.1.2
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -9,7 +9,7 @@
 /*global Modernizr $*/
 
 
-(function (document, window, $document, $window, $body, $) {
+(function(document, window, $document, $window, $body, $) {
     "use strict";
 
     /**
@@ -17,9 +17,9 @@
      * Dependencies
      *
      */
-    $.support.transition = (function () {
+    $.support.transition = (function() {
 
-        var transitionEnd = (function () {
+        var transitionEnd = (function() {
 
             var el = document.createElement('GI'),
                 transEndEventNames = {
@@ -27,7 +27,8 @@
                     'MozTransition': 'transitionend',
                     'OTransition': 'oTransitionEnd otransitionend',
                     'transition': 'transitionend'
-                }, name;
+                },
+                name;
 
             for (name in transEndEventNames) {
                 if (el.style[name] !== undefined) {
@@ -45,7 +46,7 @@
 
     var GI_TW_ID = 0;
 
-    var TheWall = function ($el, myOptions) {
+    var TheWall = function($el, myOptions) {
 
         /*
          *
@@ -69,12 +70,13 @@
                     top: 10,
                     bottom: 10
                 },
+                scrollOffset: 150,
                 // settings
                 arrows: true,
                 closebutton: true,
                 keyboardNavigation: true,
                 animationSpeed: 300,
-                autoscroll:true,
+                autoscroll: true,
                 responsive: true,
                 initialWrapperHeight: 600,
                 dynamicHeight: true,
@@ -124,7 +126,7 @@
          *
          */
 
-        var execCallback = function (callback, arg) {
+        var execCallback = function(callback, arg) {
             if (typeof callback === "function") {
                 $.proxy(callback, self, arg)();
             }
@@ -137,13 +139,13 @@
          *
          */
 
-        Function.prototype.debounce = function (wait, immediate) {
+        Function.prototype.debounce = function(wait, immediate) {
             var func = this,
                 timeout, result;
-            return function () {
+            return function() {
                 var context = this,
                     args = arguments;
-                var later = function () {
+                var later = function() {
                     timeout = null;
                     if (!immediate) result = func.apply(context, args);
                 };
@@ -158,7 +160,7 @@
          * Build the navigation arrows html
          *
          */
-        var _buildArrows = function () {
+        var _buildArrows = function() {
             this.$expanderWrapper.append('<i class="GI_TW_arrow GI_TW_prev GI_TW_Controls"><span class="' + options.prevButtonClass + '"></span></i><i class="GI_TW_arrow GI_TW_next GI_TW_Controls"><span class="' + options.nextButtonClass + '"></span></i>');
             this.$next = $('.GI_TW_next', this.$expanderWrapper);
             this.$prev = $('.GI_TW_prev', this.$expanderWrapper);
@@ -170,7 +172,7 @@
          * Show and hide the arrows from the current slide index
          *
          */
-        var _updateArrows = function () {
+        var _updateArrows = function() {
             self.$prev.toggleClass('GI_TW_hidden', self.currentIndex <= 0);
             self.$next.toggleClass('GI_TW_hidden', self.currentIndex >= self.itemsLength - 1);
         };
@@ -178,7 +180,7 @@
          * Scroll smoothly the page to a certain value
          * @param  { Int } value: pixels from the top
          */
-        var _scrollTo = function (value) {
+        var _scrollTo = function(value) {
             if (!options.autoscroll) return false;
             $('html,body').animate({
                 scrollTop: value
@@ -189,7 +191,7 @@
          * Append the class current over the active li selected
          *
          */
-        var _updateCurrentClass = function () {
+        var _updateCurrentClass = function() {
             self.$items.removeClass('GI_TW_Current').eq(self.currentIndex).addClass('GI_TW_Current');
         };
 
@@ -198,7 +200,7 @@
          * Append the class current over the active li selected
          *
          */
-        var _updateContentPointerPosition = function () {
+        var _updateContentPointerPosition = function() {
             this.$contentPointer.css({
                 left: this.selectedLiData.offset.left + this.$selectedli.width() / 2
             });
@@ -208,10 +210,10 @@
          * @param  { String } src: image url
          * @return { Object } jquery deferred object
          */
-        var _loadImage = function (src) {
+        var _loadImage = function(src) {
             var dfr = new $.Deferred(),
                 img = new Image();
-            img.onload = function () {
+            img.onload = function() {
                 self.$expanderInner.html('<div class="GI_TW_fullimg"><img src="' + src + '" /></div>');
                 dfr.resolve();
                 img = null;
@@ -225,10 +227,10 @@
          * @param  { String } href: contents url
          * @return { Object } jquery deferred object
          */
-        var _loadAjaxContents = function (href) {
+        var _loadAjaxContents = function(href) {
             var dfr = new $.Deferred();
 
-            $.get(href, function (data) {
+            $.get(href, function(data) {
                 self.$expanderInner.html(data);
                 dfr.resolve();
             });
@@ -239,7 +241,7 @@
          * Update the expander wrapper height
          * @param  { Float } newHeight: height to set to the expander wrapper
          */
-        var _updateExpanderWrapperHeight = function (newHeight) {
+        var _updateExpanderWrapperHeight = function(newHeight) {
             this.$expanderInner.css({
                 height: newHeight
             });
@@ -258,7 +260,7 @@
          *
          */
 
-        var _onItemChange = function () {
+        var _onItemChange = function() {
 
             // this.currentIndex must be always into a valid range
             if (this.selectedLiData.index < 0 || this.selectedLiData.index >= this.itemsLength) return;
@@ -271,7 +273,7 @@
         };
 
 
-        var _onKeypress = function (e) {
+        var _onKeypress = function(e) {
             if ($.inArray(e.keyCode, keyboardKeys) > -1) {
                 e.preventDefault();
             }
@@ -284,7 +286,7 @@
             }
         };
 
-        var _onArrowClicked = function (e) {
+        var _onArrowClicked = function(e) {
             e.stopImmediatePropagation();
             e.preventDefault();
             var $this = $(e.currentTarget);
@@ -297,7 +299,7 @@
          *
          */
 
-        this.init = function () {
+        this.init = function() {
 
             execCallback(options.onBeforeInit);
 
@@ -328,13 +330,13 @@
          * Se the lis offset data
          *
          */
-        this.setLisOffsets = function () {
+        this.setLisOffsets = function() {
             // these variables will be used inside the loop the get the li row position
             var cachedOffsetTop = 0,
                 rowIndex = 0,
                 $previousLi;
             // loop all the lis in the grid
-            this.$items.each($.proxy(function (i, elm) {
+            this.$items.each($.proxy(function(i, elm) {
                 var $li = $(elm),
                     liData = $li.data();
                 // remove all the the wall classes
@@ -376,7 +378,7 @@
          *
          */
 
-        this.setViewport = function () {
+        this.setViewport = function() {
 
             if (!isVisible) return;
             // set the new offsets
@@ -391,7 +393,7 @@
         /**
          * Load the contents of the a contained into the li selected
          */
-        this.loadInnerContents = function () {
+        this.loadInnerContents = function() {
             var $a = this.$selectedli.find('a'),
                 callback,
                 href = this.selectedLiData.href || $a.attr('href');
@@ -405,15 +407,15 @@
             } else {
                 execCallback(options.onContentLoading);
                 switch (this.selectedLiData.contenttype) {
-                case 'ajax':
-                    callback = _loadAjaxContents(href);
-                    break;
-                default:
-                    callback = _loadImage(href);
-                    break;
+                    case 'ajax':
+                        callback = _loadAjaxContents(href);
+                        break;
+                    default:
+                        callback = _loadImage(href);
+                        break;
                 }
 
-                callback.then(function () {
+                callback.then(function() {
                     // set this value temporary to auto
                     self.$expanderInner.css({
                         height: 'auto'
@@ -423,7 +425,7 @@
                     _updateExpanderWrapperHeight.call(self, newHeight);
                     // update the DOM
                     self.updateDOM();
-                    _scrollTo(self.$expanderWrapper.offset().top - 150);
+                    _scrollTo(self.$expanderWrapper.offset().top - self.options);
                     execCallback(options.onContentLoaded);
                     isLoading = false;
                 });
@@ -434,7 +436,7 @@
          * Open the expander div if it's closed otherwise just update the content inside
          * @param  { Object } e jQuery event object
          */
-        this.showExpander = function (e) {
+        this.showExpander = function(e) {
             e.preventDefault();
             // cache the seleced li
             this.$selectedli = $(e.currentTarget);
@@ -459,7 +461,7 @@
         /**
          * Hide the expander cleaning its inner html
          */
-        this.hideExpander = function () {
+        this.hideExpander = function() {
             this.$expanderWrapper.removeClass('opened').stop(true, false)[csstransitions ? 'css' : 'animate']({
                 "height": 0
             }, options.animationSpeed);
@@ -489,7 +491,7 @@
          *
          */
 
-        this.updateDOM = function () {
+        this.updateDOM = function() {
             this.selectedLiData = this.$selectedli.data();
 
             _updateContentPointerPosition.call(this);
@@ -506,9 +508,9 @@
         /**
          * Update the elements position
          */
-        this.updateElementsPosition = function () {
+        this.updateElementsPosition = function() {
 
-            this.$items.each(function (i, elm) {
+            this.$items.each(function(i, elm) {
                 var $li = $(elm),
                     liData = $li.data(),
                     pushIt = liData && liData.rowIndex === self.selectedLiData.rowIndex;
@@ -523,7 +525,7 @@
 
         };
 
-        this.updateExpanderPosition = function () {
+        this.updateExpanderPosition = function() {
             if (!isVisible) return;
             var newTopPosition = this.selectedLiData.offset.top + this.$selectedli.height() + options.margin.top;
             // set expandWrapper top position
@@ -535,7 +537,7 @@
          * Resize the height of the expander to any custom value
          * @param  { Int } newHeight: the new height value that must be set to the expander wrapper
          */
-        this.resizeHeight = function (newHeight) {
+        this.resizeHeight = function(newHeight) {
             _updateExpanderWrapperHeight.call(this, newHeight);
             this.setViewport();
         };
@@ -545,7 +547,7 @@
          * @param { Int }
          *
          */
-        this.showItemByIndex = function (index) {
+        this.showItemByIndex = function(index) {
             var $currentLi = this.$items.eq(index);
             if ($currentLi.length) {
                 this.$selectedli = $currentLi;
@@ -555,12 +557,12 @@
 
         };
 
-        this.next = function () {
+        this.next = function() {
             if (isLoading ||  !isVisible || this.currentIndex === this.itemsLength - 1 ) return;
             this.showItemByIndex(this.currentIndex + 1);
         };
 
-        this.prev = function () {
+        this.prev = function() {
             if (isLoading || !isVisible ||  this.currentIndex === 0) return;
             this.showItemByIndex(this.currentIndex - 1);
         };
@@ -571,10 +573,10 @@
          *
          */
 
-        this.bindAll = function () {
+        this.bindAll = function() {
 
             if (csstransitions) {
-                this.$expanderWrapper.on(csstransitions.end + eventsNamespace, function () {
+                this.$expanderWrapper.on(csstransitions.end + eventsNamespace, function() {
                     $(this).removeClass('animating');
                 });
             }
@@ -595,7 +597,7 @@
                 $window.on("keydown" + eventsNamespace, $.proxy(_onKeypress, this));
 
         };
-        this.unbindAll = function () {
+        this.unbindAll = function() {
             this.$el.off(eventsNamespace);
             this.$expanderWrapper.off(eventsNamespace);
         };
@@ -606,7 +608,7 @@
          *
          */
 
-        this.destroy = function (e) {
+        this.destroy = function(e) {
             if (e) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
@@ -626,7 +628,7 @@
      *
      */
 
-    $.fn.GITheWall = function (myOptions) {
+    $.fn.GITheWall = function(myOptions) {
         if (!this.length) return;
         return new TheWall(this, myOptions);
     };
