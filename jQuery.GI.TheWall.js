@@ -425,7 +425,7 @@
                     _updateExpanderWrapperHeight.call(self, newHeight);
                     // update the DOM
                     self.updateDOM();
-                    _scrollTo(self.$expanderWrapper.offset().top - self.options);
+                    _scrollTo(self.$expanderWrapper.offset().top - self.options.scrollOffset);
                     execCallback(options.onContentLoaded);
                     isLoading = false;
                 });
