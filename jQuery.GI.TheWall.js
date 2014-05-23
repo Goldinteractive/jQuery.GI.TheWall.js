@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.3
+ * Version 0.1.4
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -70,6 +70,7 @@
                     top: 10,
                     bottom: 10
                 },
+                scrollerElm: null,
                 scrollOffset: 150,
                 // settings
                 arrows: true,
@@ -182,7 +183,7 @@
          */
         var _scrollTo = function(value) {
             if (!options.autoscroll) return false;
-            $('html,body').animate({
+            $(options.scrollerElm || 'html,body').animate({
                 scrollTop: value
             });
         };
@@ -425,7 +426,8 @@
                     _updateExpanderWrapperHeight.call(self, newHeight);
                     // update the DOM
                     self.updateDOM();
-                    _scrollTo(self.$expanderWrapper.offset().top - self.options.scrollOffset);
+                    console.log(self.$expanderWrapper.offset().top - options.scrollOffset);
+                    _scrollTo(self.$expanderWrapper.offset().top - options.scrollOffset);
                     execCallback(options.onContentLoaded);
                     isLoading = false;
                 });
