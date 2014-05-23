@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.2
+ * Version 0.1.3
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
