@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.4
+ * Version 0.1.5
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -426,7 +426,6 @@
                     _updateExpanderWrapperHeight.call(self, newHeight);
                     // update the DOM
                     self.updateDOM();
-                    console.log(self.$expanderWrapper.offset().top - options.scrollOffset);
                     _scrollTo(self.$expanderWrapper.offset().top - options.scrollOffset);
                     execCallback(options.onContentLoaded);
                     isLoading = false;
