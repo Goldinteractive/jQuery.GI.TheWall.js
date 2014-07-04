@@ -5,5 +5,5 @@ This plugin could be used to create easily an image gallery similar to the googl
 
 [Demo](http://goldinteractive.github.io/jQuery.GI.TheWall.js/)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/GITheWall.svg)](https://saucelabs.com/u/GITheWall)
+[![Build Status](https://travis-ci.org/Goldinteractive/jQuery.GI.TheWall.js.svg?branch=master)](https://travis-ci.org/Goldinteractive/jQuery.GI.TheWall.js)
 
