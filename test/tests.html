@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="css/mocha.css" type="text/css"  />
+  <link rel="stylesheet" href="../assets/css/GITheWall.css" type="text/css"  />
+  <style>
+  /**
+   *  Hide the markup to see the tests
+   */
+   .demo {
+     visibility:hidden!important;
+   }
+  </style>
+</head>
+<body>
+
+  <div class="demo">
+    <div class="GITheWall">
+      <ul>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?1">
+          <img src="http://lorempixel.com/570/570?1" />
+        </li>
+        <li data-contenttype="ajax" data-href="ajax-contents/ajax-text-image.html">
+          ajax text + image
+        </li>
+        <li data-contenttype="ajax" data-href="ajax-contents/ajax-text.html">
+          ajax text
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?2">
+          <img src="http://lorempixel.com/570/570?2" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?3">
+          <img src="http://lorempixel.com/570/570?3" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?4">
+          <img src="http://lorempixel.com/570/570?4" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?5">
+          <img src="http://lorempixel.com/570/570?5" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?6">
+          <img src="http://lorempixel.com/570/570?6" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?7">
+          <img src="http://lorempixel.com/570/570?7" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?8">
+          <img src="http://lorempixel.com/570/570?8" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?10">
+          <img src="http://lorempixel.com/570/570?10" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?11">
+          <img src="http://lorempixel.com/570/570?11" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?12">
+          <img src="http://lorempixel.com/570/570?12" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?13">
+          <img src="http://lorempixel.com/570/570?13" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?14">
+          <img src="http://lorempixel.com/570/570?14" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?15">
+          <img src="http://lorempixel.com/570/570?15" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?16">
+          <img src="http://lorempixel.com/570/570?16" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?17">
+          <img src="http://lorempixel.com/570/570?17" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?18">
+          <img src="http://lorempixel.com/570/570?18" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="mocha"></div>
+
+  <!-- Vendor -->
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!-- mocha -->
+  <script src="js/vendor/mocha.js"></script>
+  <script src="js/vendor/chai.js" ></script>
+  <script src="js/vendor/sinon.js" ></script>
+  <script src="js/vendor/sinon-chai.js" ></script>
+  <script src="js/vendor/simulant.js"></script>
+  <script>
+    mocha.setup('bdd');
+    // Setup chai
+    var assert = chai.assert,
+    should = chai.should,
+    expect = chai.expect;
+  </script>
+  <script src="../jQuery.GI.TheWall.js"></script>
+  <script src="js/tests.js"></script>
+  <!-- run mocha -->
+  <script>
+    $(window).on('load',function () {
+      var runner;
+
+      runner = mocha.run();
+
+
+      var failedTests = [];
+
+      function logFailure(test, err){
+        var flattenTitles = function(test){
+          var titles = [];
+          while (test.parent.title){
+            titles.push(test.parent.title);
+            test = test.parent;
+          }
+          return titles.reverse();
+        };
+
+        failedTests.push({name: test.title, result: false, message: err.message, stack: err.stack, titles: flattenTitles(test) });
+      }
+
+      runner.on('end', function(){
+        window.mochaResults = runner.stats;
+        window.mochaResults.reports = failedTests;
+        $('.demo').remove();
+      });
+
+      runner.on('fail', logFailure);
+
+    });
+    </script>
+  </body>
+</html>

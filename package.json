@@ -1,0 +1,37 @@
+{
+  "name": "jQuery.GI.TheWall.js",
+  "version": "0.1.6",
+  "description": "This plugin could be used to create easily an image gallery similar to the google image search",
+  "main": "jQuery.GI.TheWall.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Goldinteractive/jQuery.GI.TheWall.js.git"
+  },
+  "author": "Goldinteractive <mail@goldinteractive.ch> (http://goldinteractive.ch)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Goldinteractive/jQuery.GI.TheWall.js/issues"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-compass": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-saucelabs": "*",
+    "grunt-mocha": "*",
+    "load-grunt-tasks": "*",
+    "load-grunt-configs": "*"
+  },
+  "homepage": "https://github.com/Goldinteractive/jQuery.GI.TheWall.js"
+}

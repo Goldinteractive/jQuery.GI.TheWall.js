@@ -1,0 +1,152 @@
+//
+// Mixins
+// --------------------------------------------------
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/**
+ *
+ * Used to generate responsive styles according to the breakpoint we set into the variables file
+ *
+ */
+@mixin respond-to($media) {
+  @if $media == landscape {
+    @media only screen and (orientation:landscape) { @content; }
+  }
+  @else if $media == portrait {
+    @media only screen and (orientation:portrait) { @content; }
+  }
+  @else if $media == mobile {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == exclude-mobile {
+    @media only screen and (min-width: $break-small + 1) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $break-large + 1) { @content; }
+  }
+  @else if $media == retina {
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) { @content; }
+  }
+}
+
+/**
+ *
+ * Simpler shortcut to create easily break points
+ *
+ */
+
+@mixin breakpoint($width) {
+  @media only screen and (max-width: $width) {
+      @content;
+  }
+}
+
+/**
+ * Easy functions to create easily pure css arrows anywhere
+ */
+@mixin arrow-up($size:10px,$color:black) {
+  width: 0;
+  height: 0;
+  border-left: $size solid transparent;
+  border-right: $size solid transparent;
+
+  border-bottom: $size solid $color;
+}
+
+@mixin arrow-down($size:10px,$color:black) {
+  width: 0;
+  height: 0;
+  border-left: $size  solid transparent;
+  border-right:  $size solid transparent;
+
+  border-top: $size solid $color;
+}
+
+@mixin arrow-right($size:10px,$color:black) {
+  width: 0;
+  height: 0;
+  border-top: $size  solid transparent;
+  border-bottom:  $size  solid transparent;
+
+  border-left: $size  solid $color;
+}
+
+@mixin arrow-left($size:10px,$color:black) {
+  width: 0;
+  height: 0;
+  border-top: $size  solid transparent;
+  border-bottom: $size  solid transparent;
+
+  border-right: $size  solid $color;
+}
+
+
+// IE7 inline-block
+// ----------------
+@mixin ie7-inline-block() {
+  *display: inline; /* IE7 inline-block hack */
+  *zoom: 1;
+}
+
+@mixin ie7-restore-right-whitespace () {
+  *margin-right: .3em;
+}
+
+
+// Sizing shortcuts
+// -------------------------
+@mixin size($height, $width) {
+  width: $width;
+  height: $height;
+}
+@mixin square($size) {
+  @include size($size, $size);
+}
+
+// Placeholder text
+// -------------------------
+@mixin placeholder($color: $placeholderText) {
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Reset filters for IE
+@mixin reset-filter() {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}

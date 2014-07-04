@@ -1,0 +1,47 @@
+.demo {
+    position: relative;
+    margin-bottom: 50px;
+    @include clearfix();
+    .GITheWall {
+        float:left;
+    }
+    .ajax {
+        padding:20px 0;
+        color:white;
+        min-height: 550px;
+        .txt {
+            font-size: 0.8em;
+            float:left;
+            padding:0 5% 0 0;
+            width:45%;
+        }
+        .img {
+            position: relative;
+            width:50%;
+            height:550px;
+            float:left;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+    ul {
+        text-align: center !important;
+        li {
+            cursor: pointer;
+            color:white;
+            background: #444;
+            line-height: 3em;
+            float:none;
+            display: inline-block;
+            @include square(200px);
+            img {
+                width:200px;
+                height:200px;
+            }
+        }
+    }
+}
+
+.GI_TW_expander {
+    color:white;
+}

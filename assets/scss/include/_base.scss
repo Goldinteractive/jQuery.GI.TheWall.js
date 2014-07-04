@@ -1,0 +1,63 @@
+html {
+    min-height: 100%;
+
+    //border: 10px solid black;
+
+	@include box-sizing(border-box);
+}
+body {
+    font-size: 1.3em;
+    font-family: "Avenir LT W01 55 Roman",sans-serif;
+    margin: 0;
+    padding: 5% 0 0;
+    background: url('../img/kitten.gif') no-repeat bottom right;
+}
+
+h1, h2, h3 {
+    font-family: "Avenir LT W01 85 Heavy", sans-serif;
+    font-weight: normal;
+}
+h2 {
+    margin: 3em 0 1em;
+}
+a {
+    color: $link-color;
+}
+.viewport {
+    position: relative;
+    //text-align: center;
+}
+.row {
+
+    width: 80%;
+    margin: 0 auto;
+    @include clearfix();
+}
+
+pre {
+    text-align: left;
+}
+.api {
+    padding:0;
+    list-style: none;
+    p {
+        margin: 0.1em;
+    }
+    pre {
+        margin-bottom: 0.2em;
+        margin-top: 1.5em;
+    }
+    ul {
+        margin:0.2em;
+        li {
+            font-size: 0.8em;
+        }
+    }
+}
+footer {
+    margin:3em 0 0;
+    padding:10px 10%;
+    a {
+        text-decoration: none;
+    }
+}

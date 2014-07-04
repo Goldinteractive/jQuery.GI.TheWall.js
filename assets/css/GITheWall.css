@@ -1,0 +1,224 @@
+/**
+ *
+ * Used to generate responsive styles according to the breakpoint we set into the variables file
+ *
+ */
+/**
+ *
+ * Simpler shortcut to create easily break points
+ *
+ */
+/**
+ * Easy functions to create easily pure css arrows anywhere
+ */
+/**
+ *
+ * The wall could be used to show an image gallery or any other content in a "google images" user interaction way
+ * Here there is all the html needed
+ *
+ *
+ *  <div class="GITheWall">
+ *    <ul>
+ *      <li data-contenttype="image" data-href="path/to/the/image">
+ *        <img src="small/thumb" />
+ *      <li>
+ *      <li data-contenttype="ajax" data-href="path/to/the/html/to/load">
+ *        <img src="small/thumb" />
+ *      <li>
+ *    </ul>
+ *  </div>
+ *
+ */
+.GITheWall ul {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0 auto;
+  text-align: left;
+  width: 100%;
+}
+.GITheWall ul li {
+  display: inline-block;
+  margin: 10px 5px 0 5px;
+  vertical-align: top;
+  width: 200px;
+}
+.GITheWall ul li.GI_TW_Selected_Row {
+  -webkit-transition: margin-bottom 0.3s ease-in;
+  -moz-transition: margin-bottom 0.3s ease-in;
+  -o-transition: margin-bottom 0.3s ease-in;
+  transition: margin-bottom 0.3s ease-in;
+}
+
+.GI_TW_expander {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background: black;
+  left: 0;
+  width: 100%;
+  margin-top: 10px;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.3s ease-in;
+  -moz-transition: height 0.3s ease-in;
+  -o-transition: height 0.3s ease-in;
+  transition: height 0.3s ease-in;
+}
+.GI_TW_expander.animating {
+  overflow: hidden !important;
+}
+.GI_TW_expander.opened {
+  overflow: visible;
+}
+.GI_TW_expander .GI_TW_pointer {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: -20px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid black;
+  -webkit-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+}
+.GI_TW_expander .GI_TW_expander-inner {
+  width: 80%;
+  height: 560px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.GI_TW_expander .GI_TW_expander-inner .GI_TW_fullimg {
+  position: relative;
+  width: 100%;
+  height: 580px;
+  margin: 10px 0 0;
+  text-align: center;
+  overflow: hidden;
+}
+.GI_TW_expander .GI_TW_expander-inner .GI_TW_fullimg img {
+  position: relative;
+}
+.GI_TW_expander .GI_TW_Controls {
+  z-index: 1;
+}
+.GI_TW_expander .GI_TW_close {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.GI_TW_expander .GI_TW_arrow {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_hidden {
+  display: none;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_next {
+  right: 30px;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_prev {
+  left: 30px;
+}
+.GI_TW_expander .GI_TW_loading {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ddd;
+  box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #cccccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0;
+  -webkit-animation: loader 0.5s infinite ease-in-out both;
+  -moz-animation: loader 0.5s infinite ease-in-out both;
+  -ms-animation: loader 0.5s infinite ease-in-out both;
+  -o-animation: loader 0.5s infinite ease-in-out both;
+  animation: loader 0.5s infinite ease-in-out both;
+}
+
+@-moz-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@-webkit-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@-o-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@-ms-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}

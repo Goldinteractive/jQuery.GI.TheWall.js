@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery.GI.TheWall.js demo</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="http://highlightjs.org/static/styles/github.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min.js"></script>
+  <link href="http://fast.fonts.net/cssapi/4bedbdc9-7261-43be-b2e9-f34abce90975.css" media="all" type="text/css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" media="all" type="text/css" rel="stylesheet">
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-11754034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,initial-scale=1.0">
+  <link rel="shortcut icon"  href="http://www.goldinteractive.ch/favicon.ico">
+  <link rel="apple-touch-icon" href="http://www.goldinteractive.ch/touch-icon-iphone.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="http://www.goldinteractive.ch/touch-icon-ipad.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="http://www.goldinteractive.ch/touch-icon-iphone-retina.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="http://www.goldinteractive.ch/touch-icon-ipad-retina.png" />
+
+
+  <link rel="shortcut icon" href="http://www.goldinteractive.ch/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="64x64" href="http://www.goldinteractive.ch/favicons/favicon.png">
+  <link rel="apple-touch-icon" href="http://www.goldinteractive.ch/favicons/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="http://www.goldinteractive.ch/favicons/apple-touch-icon-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.goldinteractive.ch/favicons/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://www.goldinteractive.ch/favicons/apple-touch-icon-76x76-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.goldinteractive.ch/favicons/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://www.goldinteractive.ch/favicons/apple-touch-icon-120x120-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.goldinteractive.ch/favicons/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://www.goldinteractive.ch/favicons/apple-touch-icon-152x152-precomposed.png">
+  <meta name="msapplication-TileImage" content="http://www.goldinteractive.ch/favicons/windows-tile-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+
+</head>
+<body>
+  <div role="main" class="viewport">
+    <div class="row">
+    <a target="_blank" href="http://goldinteractive.ch">
+      <img width="150" src="data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%22104px%22%20height%3D%2258.614px%22%20viewBox%3D%220%200%20104%2058.614%22%20enable-background%3D%22new%200%200%20104%2058.614%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20d%3D%22M0.197%2C19.983c0-4.687%2C8.799-4.3%2C15.284-10.788c3.404%2C3.598%2C8.092%2C6.036%2C12.973%2C7.065v0.771%20c-2.44%2C0-3.596%2C0.898-3.596%2C3.211V38.67c0%2C0.963%2C0.899%2C1.8%2C1.798%2C2.955c0.835%2C1.156%2C1.734%2C2.634%2C1.734%2C5.009%20c0%2C7.708-8.22%2C11.753-14.964%2C11.753c-4.366%2C0-12.394-0.642-12.394-6.678c0-2.697%2C2.312-4.239%2C4.817-4.239%20c2.504%2C0%2C5.651%2C1.155%2C5.588%2C4.11c0%2C4.43-3.982%2C3.338-3.982%2C4.493c0%2C1.027%2C3.081%2C1.158%2C3.916%2C1.158c4.11%2C0%2C8.927-1.734%2C8.927-6.551%20c0-4.818-4.944-5.779-4.944-13.616c-3.211%2C2.248-6.293%2C4.688-9.183%2C7.322c-5.33-3.146-5.973-5.009-5.973-8.863V19.983z%20%20M15.225%2C19.213c-1.927-0.834-3.725-1.991-5.395-3.339v18.623c0%2C1.927%2C0.386%2C3.662%2C1.606%2C3.662c0.319%2C0%2C0.834-0.065%2C1.348-0.449%20l2.44-1.799V19.213z%22%2F%3E%3Cpath%20d%3D%22M32.758%2C16.691c5.94%2C0.184%2C13.042-1.041%2C17.083-5.203c5.755%2C4.04%2C6.429%2C6.488%2C6.429%2C14.938%20c0%2C10.776-0.98%2C12.062-6.062%2C13.288c-3.368%2C0.795-5.632%2C2.021-7.347%2C5.326c-3.49-3.184-7.653-5.938-12.367-7.224V37.08%20c2.142-0.184%2C2.264-1.775%2C2.264-2.51V16.691z%20M41.943%2C34.386c1.958%2C0.982%2C3.673%2C2.448%2C5.142%2C3.796V22.508%20c0-2.815-0.857-4.774-5.142-5.694V34.386z%22%2F%3E%3Cpath%20d%3D%22M62.172%2C13.814c0-3.978-2.143-8.878-3.796-10.164l0.673-0.672c1.104%2C1.101%2C2.449%2C3.305%2C3.062%2C5.51h0.123%20c0.856-6.061%2C8.388-8.144%2C14.143-8.144h0.551v1.101h-0.306c-3.735%2C0-5.266%2C2.696-5.266%2C7.043v25.653%20c0%2C2.204%2C0.245%2C3.979%2C2.205%2C3.979c0.855%2C0%2C2.142-0.733%2C3.122-1.226l0.307%2C0.798c-3.369%2C2.203-6.431%2C4.775-9.552%2C7.346%20c-2.204-2.817-4.96-5.144-8.081-6.796l0.306-0.797c0.367%2C0.122%2C0.857%2C0.369%2C1.347%2C0.369c0.551%2C0%2C1.163-0.369%2C1.163-1.041V13.814z%22%2F%3E%3Cpath%20d%3D%22M80.292%2C18.346c0.918%2C0.307%2C2.143%2C0.613%2C3.245%2C0.613c2.143%2C0%2C4.837-0.185%2C4.837-2.512c-3.98-1.101-9.062-3.552-9.062-8.633%20c0-4.775%2C3.674-7.468%2C7.899-7.468c0.796%2C0%2C1.591%2C0.059%2C2.388%2C0.244v0.979c-0.245-0.059-0.92-0.122-1.654-0.122%20c-2.448%2C0-3.856%2C0.491-3.856%2C1.898c0%2C1.348%2C0.918%2C2.142%2C2.327%2C2.756l8.756%2C3.367c8.325%2C3.061%2C8.632%2C8.878%2C8.632%2C16.959%20c0%2C10.776-0.979%2C12.062-6.062%2C13.288c-3.366%2C0.795-5.631%2C2.021-7.346%2C5.326c-3.49-3.184-7.653-5.938-12.368-7.224V37.08%20c2.204-0.184%2C2.266-1.775%2C2.266-2.51V18.346z%20M89.476%2C34.386c1.959%2C0.982%2C3.674%2C2.448%2C5.144%2C3.796V22.508%20c0-2.815-0.857-4.774-5.144-5.694V34.386z%22%2F%3E%3C%2Fsvg%3E" />
+    </a>
+    <h1>jQuery.GI.TheWall.js</h1>
+    <p>This plugin could be used to create easily an image gallery similar to the google image search</p>
+    <iframe src="http://ghbtns.com/github-btn.html?user=goldinteractive&repo=jQuery.GI.TheWall.js&type=watch&size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30"></iframe>
+      <iframe src="http://ghbtns.com/github-btn.html?user=goldinteractive&type=follow&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="230" height="30"></iframe>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-text="jQuery.GI.TheWall.js - Create easily an image gallery similar to the google image search" data-via="goldinteractive" data-size="large">Tweet</a>
+    <h2 id="demo1">Demo</h2>
+    <pre class="javascript"><code>
+$('.GITheWall').GITheWall();
+
+</code></pre>
+</div>
+  <div class="demo">
+    <div class="GITheWall">
+      <ul>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?1">
+          <img src="http://lorempixel.com/570/570?1" />
+        </li>
+        <li data-contenttype="ajax" data-href="ajax-contents/ajax-text-image.html">
+          ajax text + image
+        </li>
+        <li data-contenttype="ajax" data-href="ajax-contents/ajax-text.html">
+          ajax text
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?2">
+          <img src="http://lorempixel.com/570/570?2" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?3">
+          <img src="http://lorempixel.com/570/570?3" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?4">
+          <img src="http://lorempixel.com/570/570?4" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?5">
+          <img src="http://lorempixel.com/570/570?5" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?6">
+          <img src="http://lorempixel.com/570/570?6" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?7">
+          <img src="http://lorempixel.com/570/570?7" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?8">
+          <img src="http://lorempixel.com/570/570?8" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?10">
+          <img src="http://lorempixel.com/570/570?10" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?11">
+          <img src="http://lorempixel.com/570/570?11" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?12">
+          <img src="http://lorempixel.com/570/570?12" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?13">
+          <img src="http://lorempixel.com/570/570?13" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?14">
+          <img src="http://lorempixel.com/570/570?14" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?15">
+          <img src="http://lorempixel.com/570/570?15" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?16">
+          <img src="http://lorempixel.com/570/570?16" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?17">
+          <img src="http://lorempixel.com/570/570?17" />
+        </li>
+        <li data-contenttype="image" data-href="http://lorempixel.com/570/570?18">
+          <img src="http://lorempixel.com/570/570?18" />
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+        <h2 id="options">Options Available</h2>
+    <pre class="javascript"><code>
+var wall = $('div.wall').GITheWall({
+  // Callbacks API
+  onBeforeInit: null,
+  onReady: null,
+  onViewPortUpdate: null,
+  onItemChange: null,
+  onDestroy: null,
+  onShow: null,
+  onHide: null,
+  onContentLoading: null,
+  onContentLoaded: null,
+  margin: {
+    top: 10,
+    bottom: 10
+  },
+  scrollerElm: null,
+  scrollOffset: 150,
+  // settings
+  arrows: true,
+  closebutton: true,
+  keyboardNavigation: true,
+  animationSpeed: 300,
+  autoscroll: true,
+  responsive: true,
+  initialWrapperHeight: 600,
+  dynamicHeight: true,
+  nextButtonClass: '',
+  prevButtonClass: '',
+  closeButtonClass: ''
+});
+
+</code></pre>
+    <h2 id="public-api">Public API</h2>
+    <p>Public API methods</p>
+    <ul class="api">
+      <li>
+      <pre><b>showExpander</b></pre>
+        <p>
+          Open the expander div if it's closed otherwise just update the content inside
+        </p>
+      </li>
+      <li>
+      <pre><b>hideExpander</b></pre>
+        <p>
+          Hide the expander cleaning its inner html
+        </p>
+      </li>
+      <li>
+      <pre><b>update</b></pre>
+        <p>Update the plugin DOM elements (css classes and positions)</p>
+      </li>
+      <li>
+      <pre><b>updateElementsPosition</b></pre>
+        <p>Update the elements position</p>
+      </li>
+      <li>
+      <pre><b>updateExpanderPosition</b></pre>
+        Update the expander div position if it's visible
+      </li>
+      <li>
+      <pre><b>resizeHeight(newHeight)</b></pre>
+        <p>Resize the height of the expander to any custom value</p>
+        <ul>
+          <li><b>newHeight</b> {int} : the new height value that must be set to the expander wrapper</li>
+        </ul>
+      </li>
+      <li>
+      <pre><b>showItemByIndex(index)</b></pre>
+        Show the content of any brick by selecting it via index
+        <ul>
+          <li><b>index</b> {int} : index of the brick we want to show</li>
+        </ul>
+      </li>
+      <pre><b>next</b></pre>
+        Show the next brick to the one selected
+      </li>
+      <li>
+      <pre><b>prev</b></pre>
+        Show the previous brick to the one selected
+      </li>
+      <li>
+      <pre><b>bindAll</b></pre>
+        Bind all the plugin events
+      </li>
+      <li>
+      <pre><b>unbindAll</b></pre>
+        Remove all the plugin events
+      </li>
+      <li>
+      <pre><b>destroy</b></pre>
+        Remove all the plugin events and the plugin DOM elements
+      </li>
+
+    </ul>
+  </div>
+  <footer class="row">
+    <small>&copy; <a target="_blank" href="http://goldinteractive.ch">Gold Interactive</a></small>
+  </footer>
+  </div>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="jQuery.GI.TheWall.js"></script>
+  <script>
+
+  $('.GITheWall').GITheWall({
+      nextButtonClass: 'fa fa-arrow-right',
+      prevButtonClass: 'fa fa-arrow-left',
+      closeButtonClass: 'fa fa-times'
+  });
+
+
+  hljs.initHighlightingOnLoad();
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</body>
+</html>
