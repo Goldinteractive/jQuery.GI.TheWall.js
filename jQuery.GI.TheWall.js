@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.6
+ * Version 0.1.7
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -89,6 +89,13 @@
         isLoading = false,
         cachedWrapperHeight = 0,
         eventsNamespace = '.GITheWall' + GI_TW_ID,
+        eventsNames = {
+          click: istouch ? "touchstart" : "click",
+          mousedown: istouch ? "touchstart" : "mousedown",
+          mouseup: istouch ? "touchend" : "mouseup",
+          mousemove: istouch ? "touchmove" : "mousemove",
+          mouseleave: istouch ? "touchleave" : "mouseleave"
+        },
         options = $.extend(defaultOptions, myOptions);
 
       /*
@@ -580,14 +587,14 @@
         }
 
         if (options.arrows) {
-          this.$el.on('click' + eventsNamespace, '.GI_TW_arrow', this.$expanderWrapper, $.proxy(_onArrowClicked, this));
+          this.$el.on(eventsNames.click + eventsNamespace, '.GI_TW_arrow', this.$expanderWrapper, $.proxy(_onArrowClicked, this));
         }
 
         if (options.closebutton) {
-          this.$el.on('click' + eventsNamespace, '.GI_TW_close', this.$expanderWrapper, $.proxy(this.hideExpander, this));
+          this.$el.on(eventsNames.click + eventsNamespace, '.GI_TW_close', this.$expanderWrapper, $.proxy(this.hideExpander, this));
         }
 
-        this.$el.on('click' + eventsNamespace, '> ul > li', $.proxy(this.showExpander, this));
+        this.$el.on(eventsNames.click + eventsNamespace, '> ul > li', $.proxy(this.showExpander, this));
 
         if (options.responsive)
           $window.on('resize' + eventsNamespace + ' orientationchange' + eventsNamespace, $.proxy(this.setViewport.debounce(300), this));

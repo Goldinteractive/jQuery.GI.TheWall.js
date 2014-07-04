@@ -1,25 +1,33 @@
 var publicMethods = [
-  'showExpander',
-  'hideExpander',
-  'update',
-  'updateElementsPosition',
-  'updateExpanderPosition',
-  'resizeHeight',
-  'showItemByIndex',
-  'next',
-  'prev',
-  'bindAll',
-  'unbindAll',
-  'destroy'
-],
-createCallbacks = function () {
-  var i = 8,
+    'showExpander',
+    'hideExpander',
+    'update',
+    'updateElementsPosition',
+    'updateExpanderPosition',
+    'resizeHeight',
+    'showItemByIndex',
+    'next',
+    'prev',
+    'bindAll',
+    'unbindAll',
+    'destroy'
+  ],
+  istouch = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch,
+  eventsNames = {
+    click: istouch ? "touchstart" : "click",
+    mousedown: istouch ? "touchstart" : "mousedown",
+    mouseup: istouch ? "touchend" : "mouseup",
+    mousemove: istouch ? "touchmove" : "mousemove",
+    mouseleave: istouch ? "touchleave" : "mouseleave"
+  },
+  createCallbacks = function () {
+    var i = 8,
       callbacks = [];
-  while(i--) {
-    callbacks.push(sinon.spy());
-  }
-  return callbacks;
-},
+    while (i--) {
+      callbacks.push(sinon.spy());
+    }
+    return callbacks;
+  },
   teardown = function () {
     $('.demo').remove();
   };
@@ -49,21 +57,22 @@ describe('Core Tests', function () {
       expect(wall[method]).to.be.a('function');
     });
   });
-  it('It loads corrctly the image links', function (done) {
+  it('It loads correctly the image links', function (done) {
     expect($expander.length).to.be.equal(1);
-    $list.eq(0).trigger('click');
-    expect($expander.hasClass('opened')).to.be.true;
+    $list.eq(0).trigger(eventsNames.click);
     setTimeout(function () {
+      expect($expander.hasClass('opened')).to.be.true;
       expect($('.GI_TW_fullimg img').length).to.be.equal(1);
       done();
     }, 500);
   });
-  it('It loads corrctly the ajax links', function (done) {
+  it('It loads correctly the ajax links', function (done) {
     this.timeout(5000);
     expect($expander.length).to.be.equal(1);
-    $list.filter('.ajax-test').trigger('click');
-    expect($expander.hasClass('opened')).to.be.true;
+    $list.filter('.ajax-test').trigger(eventsNames.click);
+
     setTimeout(function () {
+      expect($expander.hasClass('opened')).to.be.true;
       expect($('.GI_TW_expander-inner .ajax').length).to.be.equal(1);
       done();
     }, 2000);
@@ -74,7 +83,7 @@ describe('Core Tests', function () {
   });
   it('The public api has been created and the callbacks get called', function () {
     $.each(callbacks, function (i, callback) {
-       expect(callback).to.have.been.called;
+      expect(callback).to.have.been.called;
     });
     teardown();
   });
