@@ -594,7 +594,7 @@
           this.$el.on(eventsNames.click + eventsNamespace, '.GI_TW_close', this.$expanderWrapper, $.proxy(this.hideExpander, this));
         }
 
-        this.$el.on(eventsNames.click + eventsNamespace, '> ul > li', $.proxy(this.showExpander, this));
+        this.$el.on('click' + eventsNamespace, '> ul > li', $.proxy(this.showExpander, this));
 
         if (options.responsive)
           $window.on('resize' + eventsNamespace + ' orientationchange' + eventsNamespace, $.proxy(this.setViewport.debounce(300), this));

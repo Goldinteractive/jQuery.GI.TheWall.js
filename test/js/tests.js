@@ -12,14 +12,6 @@ var publicMethods = [
     'unbindAll',
     'destroy'
   ],
-  istouch = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch,
-  eventsNames = {
-    click: istouch ? "touchstart" : "click",
-    mousedown: istouch ? "touchstart" : "mousedown",
-    mouseup: istouch ? "touchend" : "mouseup",
-    mousemove: istouch ? "touchmove" : "mousemove",
-    mouseleave: istouch ? "touchleave" : "mouseleave"
-  },
   createCallbacks = function () {
     var i = 8,
       callbacks = [];
@@ -58,20 +50,21 @@ describe('Core Tests', function () {
     });
   });
   it('It loads correctly the image links', function (done) {
-    expect($expander.length).to.be.equal(1);
-    $list.eq(0).trigger(eventsNames.click);
+    this.timeout(5000);
+    $list.eq(0).trigger('click');
     setTimeout(function () {
+      expect($expander.length).to.be.equal(1);
       expect($expander.hasClass('opened')).to.be.true;
       expect($('.GI_TW_fullimg img').length).to.be.equal(1);
       done();
-    }, 500);
+    }, 2000);
   });
   it('It loads correctly the ajax links', function (done) {
     this.timeout(5000);
     expect($expander.length).to.be.equal(1);
-    $list.filter('.ajax-test').trigger(eventsNames.click);
-
+    $list.filter('.ajax-test').trigger('click');
     setTimeout(function () {
+      expect($expander.length).to.be.equal(1);
       expect($expander.hasClass('opened')).to.be.true;
       expect($('.GI_TW_expander-inner .ajax').length).to.be.equal(1);
       done();

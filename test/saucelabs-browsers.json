@@ -10,10 +10,6 @@
 }, {
   "browserName": "safari",
   "platform": "OS X 10.9"
-},{
-  "browserName": "internet explorer",
-  "version": "8",
-  "platform": "Windows XP"
 }, {
   "browserName": "internet explorer",
   "version": "10",
@@ -27,16 +23,6 @@
   "version": "11",
   "platform": "Windows 8.1"
 }, {
-  "platform": "OS X 10.9",
-  "deviceName": "iPhone",
-  "browserName": "iphone",
-  "version": "7.0"
-}, {
-  "platform": "OS X 10.9",
-  "deviceName": "iPad",
-  "browserName": "ipad",
-  "version": "7.0"
-},{
   "platform": "OS X 10.9",
   "deviceName": "iPhone",
   "browserName": "iphone",
