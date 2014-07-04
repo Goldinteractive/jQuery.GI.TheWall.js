@@ -5,14 +5,6 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <link rel="stylesheet" href="css/mocha.css" type="text/css"  />
   <link rel="stylesheet" href="../assets/css/GITheWall.css" type="text/css"  />
-  <style>
-  /**
-   *  Hide the markup to see the tests
-   */
-   .demo {
-     visibility:hidden!important;
-   }
-  </style>
 </head>
 <body>
 
@@ -22,10 +14,10 @@
         <li data-contenttype="image" data-href="http://lorempixel.com/570/570?1">
           <img src="http://lorempixel.com/570/570?1" />
         </li>
-        <li data-contenttype="ajax" data-href="ajax-contents/ajax-text-image.html">
+        <li class="ajax-test" data-contenttype="ajax" data-href="../ajax-contents/ajax-text-image.html">
           ajax text + image
         </li>
-        <li data-contenttype="ajax" data-href="ajax-contents/ajax-text.html">
+        <li data-contenttype="ajax" data-href="../ajax-contents/ajax-text.html">
           ajax text
         </li>
         <li data-contenttype="image" data-href="http://lorempixel.com/570/570?2">
@@ -125,7 +117,7 @@
       runner.on('end', function(){
         window.mochaResults = runner.stats;
         window.mochaResults.reports = failedTests;
-        $('.demo').remove();
+
       });
 
       runner.on('fail', logFailure);

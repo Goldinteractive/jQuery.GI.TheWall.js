@@ -10,6 +10,6 @@ module.exports =
     files: ['assets/scss/**/*.scss']
     tasks: ['compass']
 
-  # test:
-  #   files: ['test/**/**']
-  #   tasks: ['mocha']
+  test:
+    files: ['test/**/**']
+    tasks: ['mocha']

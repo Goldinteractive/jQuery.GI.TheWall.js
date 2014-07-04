@@ -8,3 +8,6 @@ branches:
     - master
 
 before_install: npm install -g grunt-cli
+
+notifications:
+  email: false
