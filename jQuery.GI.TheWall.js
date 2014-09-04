@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.7
+ * Version 0.1.8
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -83,7 +83,7 @@
         },
         istouch = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch,
         keyboardKeys = [33, 34, 35, 36, 37, 38, 39, 40, 27],
-        isVisible = false,
+        isOpened = false,
         // If Modernizr is undefined we give the priority to the javascript animations
         csstransitions = $.support.transition,
         isLoading = false,
@@ -287,7 +287,7 @@
           } else if (e.keyCode === 37) {
             this.prev();
           } else if (e.keyCode === 27) {
-            this.destroy();
+            this.hideExpander();
           }
         },
 
@@ -386,7 +386,7 @@
 
       this.setViewport = function () {
 
-        if (!isVisible) return;
+        if (!isOpened) return;
         // set the new offsets
         this.setLisOffsets();
 
@@ -449,12 +449,12 @@
         this.selectedLiData = this.$selectedli.data();
 
         // if the content wrapper is already visible we just change the current content
-        if (isVisible) {
+        if (isOpened) {
           _onItemChange.call(this);
           return;
         }
 
-        isVisible = true;
+        isOpened = true;
 
         this.$expanderWrapper.addClass('opened');
 
@@ -485,9 +485,29 @@
           marginBottom: 0
         }, options.animationSpeed);
 
-        isVisible = false;
+        isOpened = false;
 
         execCallback(options.onHide);
+      };
+
+      /*
+       *
+       * Recalculate the plugin DOM elements
+       * Use this method if you add or remove elements from the wall
+       *
+       */
+
+      this.refresh = function () {
+        this.$list = $('> ul', this.$el).eq(0);
+        this.$items = $('> li', this.$list);
+        if (!this.$list.has(this.$selectedli).length) {
+          this.hideExpander();
+        }
+        this.itemsLength = this.$items.length;
+        if (isOpened) {
+          this.setLisOffsets();
+          this.update();
+        }
       };
 
       /*
@@ -531,7 +551,7 @@
       };
 
       this.updateExpanderPosition = function () {
-        if (!isVisible) return;
+        if (!isOpened) return;
         var newTopPosition = this.selectedLiData.offset.top + this.$selectedli.height() + options.margin.top;
         // set expandWrapper top position
         this.$expanderWrapper.css({
@@ -562,13 +582,21 @@
 
       };
 
+      /**
+       * Returns true the expander id visible
+       * @return {Boolean} [description]
+       */
+      this.isOpened = function () {
+        return isOpened;
+      };
+
       this.next = function () {
-        if (isLoading ||  !isVisible || this.currentIndex === this.itemsLength - 1 ) return;
+        if (isLoading ||  !isOpened || this.currentIndex === this.itemsLength - 1 ) return;
         this.showItemByIndex(this.currentIndex + 1);
       };
 
       this.prev = function () {
-        if (isLoading || !isVisible ||  this.currentIndex === 0) return;
+        if (isLoading || !isOpened ||  this.currentIndex === 0) return;
         this.showItemByIndex(this.currentIndex - 1);
       };
 

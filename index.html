@@ -128,6 +128,14 @@ $('.GITheWall').GITheWall();
       </ul>
     </div>
   </div>
+  <div class="row tac">
+    <button class="add-item btn">
+      Add another item
+    </button>
+    <button class="remove-item btn">
+      Remove one item
+    </button>
+  </div>
   <div class="row">
         <h2 id="options">Options Available</h2>
     <pre class="javascript"><code>
@@ -166,6 +174,12 @@ var wall = $('div.wall').GITheWall({
     <h2 id="public-api">Public API</h2>
     <p>Public API methods</p>
     <ul class="api">
+      <li>
+      <pre><b>refresh</b></pre>
+        <p>
+          Use this method once you have added or removed elements from the wall
+        </p>
+      </li>
       <li>
       <pre><b>showExpander</b></pre>
         <p>
@@ -225,7 +239,12 @@ var wall = $('div.wall').GITheWall({
       </li>
 
     </ul>
+      <h2 id="demo1">Installation</h2>
+        <pre class="bash"><code>
+$ bower install jQuery.GI.TheWall.js -save
+    </code></pre>
   </div>
+
   <footer class="row">
     <small>&copy; <a target="_blank" href="http://goldinteractive.ch">Gold Interactive</a></small>
   </footer>
@@ -234,10 +253,20 @@ var wall = $('div.wall').GITheWall({
   <script src="jQuery.GI.TheWall.js"></script>
   <script>
 
-  $('.GITheWall').GITheWall({
+  var wall = $('.GITheWall').GITheWall({
       nextButtonClass: 'fa fa-arrow-right',
       prevButtonClass: 'fa fa-arrow-left',
       closeButtonClass: 'fa fa-times'
+  });
+
+  $('.add-item').on('click',function(){
+    $('.GITheWall ul').append('<li data-contenttype="image" data-href="http://lorempixel.com/570/570?18"><img src="http://lorempixel.com/570/570?' + Math.random() + '" /></li>');
+    wall.refresh();
+  });
+
+  $('.remove-item').on('click',function(){
+    $('.GITheWall ul li:last').remove();
+    wall.refresh();
   });
 
 

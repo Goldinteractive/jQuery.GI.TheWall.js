@@ -61,3 +61,18 @@ footer {
         text-decoration: none;
     }
 }
+
+.btn {
+    background: black;
+    color:white;
+    font-size: 1em;
+    padding:1em;
+    border: none;
+    cursor: pointer;
+    border: 1px solid white;
+    &:hover {
+        color:black;
+        background: white;
+        border: 1px solid black;
+    }
+}

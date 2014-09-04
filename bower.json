@@ -1,0 +1,26 @@
+{
+  "name": "jQuery.GI.TheWall.js",
+  "main": "jQuery.GI.TheWall.js",
+  "version": "0.1.8",
+  "homepage": "https://github.com/Goldinteractive/jQuery.GI.TheWall.js",
+  "authors": [
+    "Gianluca Guarini <gianluca.guarini@gmail.com>"
+  ],
+  "description": "This plugin could be used to create easily an image gallery similar to the google image search",
+  "keywords": [
+    "google",
+    "images",
+    "wall"
+  ],
+  "dependencies": {
+    "jquery": "1.11.1"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
