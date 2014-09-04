@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - 0.10.1
+  - 0.10.30
 
 branches:
   only:
