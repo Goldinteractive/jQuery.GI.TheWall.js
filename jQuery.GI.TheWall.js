@@ -442,7 +442,7 @@
               height: 'auto'
             });
 
-            var newHeight = options.dynamicHeight ? self.$expanderInner.height() : options.initialWrapperHeight;
+            var newHeight = options.dynamicHeight ? self.$expanderInner.outerHeight() : options.initialWrapperHeight;
             _updateExpanderWrapperHeight.call(self, newHeight);
             // update the DOM
             self.update();
