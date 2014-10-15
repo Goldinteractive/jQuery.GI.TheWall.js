@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.8
+ * Version 0.1.9
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -211,6 +211,18 @@
           });
         },
         /**
+         * Load an ID inside the extender inner wrapper
+         * @param  { String } href: id
+         * @return { Object } jquery deferred object
+         */
+        _loadID = function (href) {
+          var dfr = new $.Deferred(),
+            id = $(href).html();
+          self.$expanderInner.html(id);
+          dfr.resolve();
+          return dfr.promise();
+        },
+        /**
          * Load an image inside the extender inner wrapper
          * @param  { String } src: image url
          * @return { Object } jquery deferred object
@@ -416,6 +428,9 @@
           case 'ajax':
             callback = _loadAjaxContents(href);
             break;
+          case 'id':
+            callback = _loadID(href);
+            break;
           default:
             callback = _loadImage(href);
             break;
@@ -427,7 +442,7 @@
               height: 'auto'
             });
 
-            var newHeight = options.dynamicHeight ? self.$expanderInner.height() : options.initialWrapperHeight;
+            var newHeight = options.dynamicHeight ? self.$expanderInner.outerHeight() : options.initialWrapperHeight;
             _updateExpanderWrapperHeight.call(self, newHeight);
             // update the DOM
             self.update();
