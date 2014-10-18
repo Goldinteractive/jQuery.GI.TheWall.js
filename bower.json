@@ -1,7 +1,7 @@
 {
   "name": "jquery-gi-thewall",
   "main": "jQuery.GI.TheWall.js",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://github.com/Goldinteractive/jQuery.GI.TheWall.js",
   "authors": [
     "Gianluca Guarini <gianluca.guarini@gmail.com>"

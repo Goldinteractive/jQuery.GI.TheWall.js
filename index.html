@@ -77,6 +77,9 @@ $('.GITheWall').GITheWall();
         <li data-contenttype="ajax" data-href="ajax-contents/ajax-text.html">
           ajax text
         </li>
+        <li data-contenttype="inline" data-href="#inline-template">
+          Inline content
+        </li>
         <li data-contenttype="image" data-href="http://lorempixel.com/570/570?2">
           <img src="http://lorempixel.com/570/570?2" />
         </li>
@@ -271,6 +274,9 @@ $ bower install jquery-gi-thewall -save
 
 
   hljs.initHighlightingOnLoad();
+</script>
+<script type="text/template" id="inline-template">
+  <p>I am an inline content</p>
 </script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </body>
