@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.8
+ * Version 0.1.9
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -211,6 +211,23 @@
           });
         },
         /**
+         * Load inline content into the extender inner wrapper by using a jquery selector
+         * @param  { String } selector: element to select in the page
+         * @return { Object } jquery deferred object
+         */
+        _loadInlineContent = function (selector) {
+          var dfr = new $.Deferred(),
+            $el = $(selector).html();
+
+          if (!$el.length) {
+            throw new Error('No element can be found using the "' + selector + '" selector');
+          }
+
+          self.$expanderInner.html($el);
+          dfr.resolve();
+          return dfr.promise();
+        },
+        /**
          * Load an image inside the extender inner wrapper
          * @param  { String } src: image url
          * @return { Object } jquery deferred object
@@ -257,6 +274,7 @@
             .addClass(csstransitions ? 'animating' : '')[csstransitions ? 'css' : 'animate']({
               'height': newHeight
             }, options.animationSpeed);
+          this.updateElementsPosition();
         },
 
         /*
@@ -416,6 +434,9 @@
           case 'ajax':
             callback = _loadAjaxContents(href);
             break;
+          case 'inline':
+            callback = _loadInlineContent(href);
+            break;
           default:
             callback = _loadImage(href);
             break;
@@ -427,7 +448,7 @@
               height: 'auto'
             });
 
-            var newHeight = options.dynamicHeight ? self.$expanderInner.height() : options.initialWrapperHeight;
+            var newHeight = options.dynamicHeight ? self.$expanderInner.outerHeight() : options.initialWrapperHeight;
             _updateExpanderWrapperHeight.call(self, newHeight);
             // update the DOM
             self.update();
@@ -523,8 +544,9 @@
         if (this.selectedLiData.rowIndex !== this.currentRowIndex) {
           this.updateElementsPosition();
         }
-        if (options.arrows)
+        if (options.arrows) {
           _updateArrows();
+        }
 
         _updateCurrentClass.call(this);
 
@@ -591,12 +613,12 @@
       };
 
       this.next = function () {
-        if (isLoading ||  !isOpened || this.currentIndex === this.itemsLength - 1 ) return;
+        if (isLoading ||  !isOpened || this.currentIndex === this.itemsLength - 1 ) return;
         this.showItemByIndex(this.currentIndex + 1);
       };
 
       this.prev = function () {
-        if (isLoading || !isOpened ||  this.currentIndex === 0) return;
+        if (isLoading || !isOpened ||  this.currentIndex === 0) return;
         this.showItemByIndex(this.currentIndex - 1);
       };
 

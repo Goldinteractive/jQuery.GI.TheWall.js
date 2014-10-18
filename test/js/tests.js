@@ -70,6 +70,17 @@ describe('Core Tests', function () {
       done();
     }, 2000);
   });
+  it('It loads correctly the inline links', function (done) {
+    this.timeout(5000);
+    expect($expander.length).to.be.equal(1);
+    $list.filter('.inline-test').trigger('click');
+    setTimeout(function () {
+      expect($expander.length).to.be.equal(1);
+      expect($expander.hasClass('opened')).to.be.true;
+      expect($('.GI_TW_expander-inner').find('p').length).to.be.equal(1);
+      done();
+    }, 2000);
+  });
   it('The destroy method works as expected', function () {
     wall.destroy();
     expect($('.GI_TW_expander').length).to.be.equal(0);
