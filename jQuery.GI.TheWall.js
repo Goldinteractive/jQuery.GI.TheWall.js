@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.9
+ * Version 0.1.10
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -297,6 +297,9 @@
 
 
         _onKeypress = function (e) {
+          if (!this.isOpened()) return;
+          if (e.target.form !== undefined) return;
+          if (e.target.isContentEditable) return;
           if ($.inArray(e.keyCode, keyboardKeys) > -1) {
             e.preventDefault();
           }
@@ -613,12 +616,12 @@
       };
 
       this.next = function () {
-        if (isLoading ||  !isOpened || this.currentIndex === this.itemsLength - 1 ) return;
+        if (isLoading || !isOpened || this.currentIndex === this.itemsLength - 1) return;
         this.showItemByIndex(this.currentIndex + 1);
       };
 
       this.prev = function () {
-        if (isLoading || !isOpened ||  this.currentIndex === 0) return;
+        if (isLoading || !isOpened || this.currentIndex === 0) return;
         this.showItemByIndex(this.currentIndex - 1);
       };
 
