@@ -297,6 +297,7 @@
 
 
         _onKeypress = function (e) {
+          if (!this.isOpened()) return;
           if ($.inArray(e.keyCode, keyboardKeys) > -1) {
             e.preventDefault();
           }
