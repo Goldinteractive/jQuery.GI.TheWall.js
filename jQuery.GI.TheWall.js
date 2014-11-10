@@ -297,6 +297,9 @@
 
 
         _onKeypress = function (e) {
+          if (!this.isOpened()) return;
+          if (e.target.form !== undefined) return;
+          if (e.target.isContentEditable) return;
           if ($.inArray(e.keyCode, keyboardKeys) > -1) {
             e.preventDefault();
           }
