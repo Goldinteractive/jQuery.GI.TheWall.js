@@ -470,6 +470,10 @@
         e.preventDefault();
         // cache the seleced li
         this.$selectedli = $(e.currentTarget);
+        if (this.$selectedli.length && this.$selectedli.hasClass('GI_TW_Current')) {
+      		this.hideExpander();
+          return;
+        }
         this.selectedLiData = this.$selectedli.data();
 
         // if the content wrapper is already visible we just change the current content
@@ -510,6 +514,8 @@
         }, options.animationSpeed);
 
         isOpened = false;
+
+        _updateCurrentClass();
 
         execCallback(options.onHide);
       };
