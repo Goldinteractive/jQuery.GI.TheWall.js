@@ -1,6 +1,6 @@
 {
   "name": "jQuery.GI.TheWall.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This plugin could be used to create easily an image gallery similar to the google image search",
   "main": "jQuery.GI.TheWall.js",
   "directories": {

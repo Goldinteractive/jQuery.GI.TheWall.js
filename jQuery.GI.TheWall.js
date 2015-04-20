@@ -197,7 +197,9 @@
          *
          */
         _updateCurrentClass = function () {
-          self.$items.removeClass('GI_TW_Current').eq(self.currentIndex).addClass('GI_TW_Current');
+          self.$items.removeClass('GI_TW_Current');
+          if (self.currentIndex)
+            self.$items.eq(self.currentIndex).addClass('GI_TW_Current');
         },
 
         /**
