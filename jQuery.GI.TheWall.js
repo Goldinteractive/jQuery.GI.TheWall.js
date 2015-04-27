@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.1.10
+ * Version 0.1.2
  * This class could be used to create image wall similar to the google image search
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
@@ -198,7 +198,7 @@
          */
         _updateCurrentClass = function () {
           self.$items.removeClass('GI_TW_Current');
-          if (self.currentIndex)
+          if (typeof self.currentIndex === 'number')
             self.$items.eq(self.currentIndex).addClass('GI_TW_Current');
         },
 
@@ -473,7 +473,7 @@
         // cache the seleced li
         this.$selectedli = $(e.currentTarget);
         if (this.$selectedli.length && this.$selectedli.hasClass('GI_TW_Current')) {
-      		this.hideExpander();
+          this.hideExpander();
           return;
         }
         this.selectedLiData = this.$selectedli.data();
