@@ -246,6 +246,19 @@
           img.src = src;
           return dfr.promise();
         },
+		/**
+		 * Load youtube video inside the extender inner wrapper
+		 * @param  { String } videoUrl: video url
+		 * @return { Object } jquery deferred object
+		 */
+		_loadVideo = function (videoUrl) {
+			var dfr = new $.Deferred();
+
+			self.$expanderInner.html('<div class="GI_TW_fullimg"><iframe src="' + videoUrl + '"></iframe></div>');
+			dfr.resolve();
+
+			return dfr.promise();
+		},
         /**
          * Load html contents inside the extender inner wrapper via ajax
          * @param  { String } href: contents url
@@ -442,6 +455,9 @@
           case 'inline':
             callback = _loadInlineContent(href);
             break;
+		  case 'video':
+			callback = _loadVideo(href);
+	  		break;
           default:
             callback = _loadImage(href);
             break;
