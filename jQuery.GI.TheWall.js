@@ -90,7 +90,7 @@
         cachedWrapperHeight = 0,
         eventsNamespace = '.GITheWall' + GI_TW_ID,
         eventsNames = {
-          click: istouch ? "touchstart" : "click",
+          click: istouch ? "touchend" : "click",
           mousedown: istouch ? "touchstart" : "mousedown",
           mouseup: istouch ? "touchend" : "mouseup",
           mousemove: istouch ? "touchmove" : "mousemove",
