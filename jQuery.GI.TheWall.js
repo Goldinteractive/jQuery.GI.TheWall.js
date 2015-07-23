@@ -497,7 +497,8 @@
       /**
        * Hide the expander cleaning its inner html
        */
-      this.hideExpander = function () {
+      this.hideExpander = function (e) {
+		e.preventDefault();
         this.$expanderWrapper.removeClass('opened').stop(true, false)[csstransitions ? 'css' : 'animate']({
           'height': 0
         }, options.animationSpeed);
