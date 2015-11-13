@@ -73,6 +73,7 @@
           closebutton: true,
           keyboardNavigation: true,
           animationSpeed: 300,
+		  autoScrollSpeed: 500,
           autoscroll: true,
           responsive: true,
           initialWrapperHeight: 600,
@@ -189,7 +190,7 @@
           if (!options.autoscroll) return false;
           $(options.scrollerElm || 'html,body').animate({
             scrollTop: value
-          });
+          }, options.autoScrollSpeed);
         },
         /**
          *
