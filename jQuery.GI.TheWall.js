@@ -91,7 +91,7 @@
         cachedWrapperHeight = 0,
         eventsNamespace = '.GITheWall' + GI_TW_ID,
         eventsNames = {
-          click: istouch ? "touchstart" : "click",
+          click: istouch ? "touchend" : "click",
           mousedown: istouch ? "touchstart" : "mousedown",
           mouseup: istouch ? "touchend" : "mouseup",
           mousemove: istouch ? "touchmove" : "mousemove",
@@ -247,6 +247,19 @@
           img.src = src;
           return dfr.promise();
         },
+		/**
+		 * Load youtube video inside the extender inner wrapper
+		 * @param  { String } videoUrl: video url
+		 * @return { Object } jquery deferred object
+		 */
+		_loadVideo = function (videoUrl) {
+			var dfr = new $.Deferred();
+
+			self.$expanderInner.html('<div class="GI_TW_fullimg"><iframe src="' + videoUrl + '"></iframe></div>');
+			dfr.resolve();
+
+			return dfr.promise();
+		},
         /**
          * Load html contents inside the extender inner wrapper via ajax
          * @param  { String } href: contents url
@@ -443,6 +456,9 @@
           case 'inline':
             callback = _loadInlineContent(href);
             break;
+		  case 'video':
+			callback = _loadVideo(href);
+	  		break;
           default:
             callback = _loadImage(href);
             break;
@@ -498,7 +514,8 @@
       /**
        * Hide the expander cleaning its inner html
        */
-      this.hideExpander = function () {
+      this.hideExpander = function (e) {
+		e.preventDefault();
         this.$expanderWrapper.removeClass('opened').stop(true, false)[csstransitions ? 'css' : 'animate']({
           'height': 0
         }, options.animationSpeed);
